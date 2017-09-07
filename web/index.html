@@ -2,8 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-	<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" 
+		integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+		crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+  		integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+  		crossorigin=""></script>
+
 	<style type="text/css">
 		html, body, #map {
 			width: 100%;
@@ -21,9 +27,9 @@
 <script type="text/javascript">
 
 	var map = L.map('map').setView([47.661815, 11.5274247], 16);
-	var tileserverport = "8080";
-	var baseurl = location.protocol + "//" + location.hostname + ":" + tileserverport;
-	L.tileLayer(baseurl + '/{z}/{x}/{y}.png', {
+	var baseurl = location.protocol + "//" + location.hostname;
+	var tilepath = "/tiles/";
+	L.tileLayer(baseurl + tilepath + '{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		maxZoom: 18
 	}).addTo(map);
