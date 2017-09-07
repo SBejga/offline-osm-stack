@@ -20,8 +20,10 @@
 
 <script type="text/javascript">
 
-	var map = L.map('map').setView([-37.8130, 144.9484], 14);
-	L.tileLayer('http://localhost:8080/{z}/{x}/{y}.png', {
+	var map = L.map('map').setView([47.661815, 11.5274247], 16);
+	var tileserverport = "8080";
+	var baseurl = location.protocol + "//" + location.hostname + ":" + tileserverport;
+	L.tileLayer(baseurl + '/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		maxZoom: 18
 	}).addTo(map);
