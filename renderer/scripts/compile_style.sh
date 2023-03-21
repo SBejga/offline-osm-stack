@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Compiling carto css style and generates OSM xml
 # that can be passed to mapnik.
 

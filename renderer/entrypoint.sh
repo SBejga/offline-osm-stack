@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 
 # TODO: prepare container by running this
 # sh /scripts/compile_style.sh

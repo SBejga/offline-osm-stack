@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 
 cp /map_data/stylesheet.xml /openstreetmap-carto
 
