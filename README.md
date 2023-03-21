@@ -1,4 +1,4 @@
-# Melbourne map
+# Offline OSM Stack
 
 Provides a configuration to launch your own retina ready map renderer.
 
@@ -27,9 +27,11 @@ renderer_1  | 2016/12/27 23:34:35 main.go:95: [INFO] Done in %v seconds 4.841471
 renderer_1  | 2016/12/27 23:34:35 main.go:103: [INFO] Starting on %s... :8090
 ```
 
+Check rendering of a single tile: http://localhost:7007/14/8724/5687.png
+
 Then you can open example in your favourite web browser:
 ```
-http://localhost:8888
+http://localhost:7000
 ```
 The initial rendering may take 10-30 seconds, after which you will see a fabulous map of Melbourne city.
 

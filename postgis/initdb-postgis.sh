@@ -23,7 +23,10 @@ for DB in template_postgis "$POSTGRES_DB"; do
 EOSQL
 done
 
-#import Melbourne city
-osm2pgsql --style /openstreetmap-carto/openstreetmap-carto.style -d gis -U postgres -k --slim /oberbayern-latest.osm.pbf
+# import _.osm.pbf
+echo "starting osm2pgsql..."
+osm2pgsql --style /openstreetmap-carto/openstreetmap-carto.style -d gis -U postgres -k --slim /region.osm.pbf
+echo "finished osm2pgsql!"
 
 touch /var/lib/postgresql/data/DB_INITED
+echo "done: DB_INITED"

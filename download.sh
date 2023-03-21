@@ -2,10 +2,16 @@
 
 set -e -u
 
+## OSM PBF
+OSM_DIR=data-osm-pbf
+OSM_FILE=oberbayern-latest.osm.pbf
+echo "downloading $OSM_FILE..."
+curl http://download.geofabrik.de/europe/germany/bayern/$OSM_FILE --output $OSM_DIR/$OSM_FILE
+echo "download complete $OSM_FILE"
+
+## SHAPES for Renderer
 UNZIP_OPTS=-qqun
 SHAPES_DIR=renderer/shapes
-
-# create and populate data dir
 mkdir -p ${SHAPES_DIR}
 
 # world_boundaries
@@ -15,7 +21,7 @@ curl -z "${SHAPES_DIR}/world_boundaries-spherical.tgz" -L -o "${SHAPES_DIR}/worl
 echo "expanding world_boundaries..."
 tar -xzf ${SHAPES_DIR}/world_boundaries-spherical.tgz -C ${SHAPES_DIR}/
 
-# ne_110m_admin_0_boundary_lines_land
+# ne_10m_admin_0_boundary_lines_land
 mkdir -p ${SHAPES_DIR}/ne_10m_admin_0_boundary_lines_land
 echo "downloading ne_10m_admin_0_boundary_lines_land..."
 curl -z ${SHAPES_DIR}/ne_10m_admin_0_boundary_lines_land.zip -L -o ${SHAPES_DIR}/ne_10m_admin_0_boundary_lines_land.zip https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip
@@ -26,6 +32,18 @@ unzip $UNZIP_OPTS ${SHAPES_DIR}/ne_10m_admin_0_boundary_lines_land.zip \
   ne_10m_admin_0_boundary_lines_land.prj \
   ne_10m_admin_0_boundary_lines_land.dbf \
   -d ${SHAPES_DIR}/ne_10m_admin_0_boundary_lines_land/
+
+# ne_110m_admin_0_boundary_lines_land
+mkdir -p ${SHAPES_DIR}/ne_110m_admin_0_boundary_lines_land
+echo "downloading ne_110m_admin_0_boundary_lines_land..."
+curl -z ${SHAPES_DIR}/ne_110m_admin_0_boundary_lines_land.zip -L -o ${SHAPES_DIR}/ne_110m_admin_0_boundary_lines_land.zip https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
+echo "expanding ne_110m_admin_0_boundary_lines_land..."
+unzip $UNZIP_OPTS ${SHAPES_DIR}/ne_110m_admin_0_boundary_lines_land.zip \
+  ne_110m_admin_0_boundary_lines_land.shp \
+  ne_110m_admin_0_boundary_lines_land.shx \
+  ne_110m_admin_0_boundary_lines_land.prj \
+  ne_110m_admin_0_boundary_lines_land.dbf \
+  -d ${SHAPES_DIR}/ne_110m_admin_0_boundary_lines_land/
 
 # water-polygons-split-3857
 mkdir -p ${SHAPES_DIR}/water-polygons-split-3857
