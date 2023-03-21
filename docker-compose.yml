@@ -13,6 +13,9 @@ services:
     ports:
       # - "127.0.0.1:5432:5432"
       - "5432:5432"
+    mem_limit: 1024m
+    mem_reservation: 1024m
+    cpus: 0.5
   renderer:
     build: ./renderer
     volumes:
@@ -26,6 +29,9 @@ services:
       # - "127.0.0.1:7008:9090"
       - "7007:8080"
       - "7008:9090"
+    mem_limit: 4096m
+    mem_reservation: 2048m
+    cpus: 1
     depends_on:
       - postgis
   web:
@@ -35,6 +41,8 @@ services:
     ports:
       # - "127.0.0.1:7009:80"
       - "7009:80"
+    mem_limit: 256m
+    mem_reservation: 256m
 
 volumes:
   postgis-data:
