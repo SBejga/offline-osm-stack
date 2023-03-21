@@ -31,10 +31,14 @@ Check rendering of a single tile: http://localhost:7007/14/8724/5687.png
 
 Then you can open example in your favourite web browser:
 ```
-http://localhost:7000
+http://localhost:7009
 ```
 The initial rendering may take 10-30 seconds, after which you will see a fabulous map of Melbourne city.
 
+## Data
+
+data of postgis database is stored in volume called "postgis-data". To delete use `docker volume` commands.
+Reminder: docker compose context prefix: `docker volume ls offline-osm-stack_postgis-data`
 
 ## Renders other areas
 
