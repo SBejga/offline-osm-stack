@@ -6,7 +6,7 @@ set -e -u
 OSM_DIR=data-osm-pbf
 OSM_FILE=oberbayern-latest.osm.pbf
 echo "downloading $OSM_FILE..."
-curl http://download.geofabrik.de/europe/germany/bayern/$OSM_FILE --output $OSM_DIR/$OSM_FILE
+curl -z $OSM_DIR/$OSM_FILE -L -o "$OSM_DIR/$OSM_FILE" http://download.geofabrik.de/europe/germany/bayern/$OSM_FILE
 echo "download complete $OSM_FILE"
 
 ## SHAPES for Renderer
@@ -80,7 +80,7 @@ unzip $UNZIP_OPTS ${SHAPES_DIR}/antarctica-icesheet-outlines-3857.zip \
   antarctica-icesheet-outlines-3857/icesheet_outlines.dbf \
   -d ${SHAPES_DIR}/
 
-rm renderer/shapes/*.zip
-rm renderer/shapes/*.tgz
+# rm renderer/shapes/*.zip
+# rm renderer/shapes/*.tgz
 
 
