@@ -13,7 +13,8 @@ services:
   renderer:
     build: ./renderer
     volumes:
-      - ./renderer/map_data:/map_data
+      - ./renderer/map_data/config.json:/map_data/config.json
+      - ./renderer/map_data/stylesheet.xml:/openstreetmap-carto/stylesheet.xml
       - ./renderer/scripts:/scripts
     volumes_from:
       - postgis:ro
@@ -27,4 +28,4 @@ services:
     volumes:
       - ./web:/usr/share/nginx/html
     ports:
-      - "127.0.0.1:7000:80"
+      - "127.0.0.1:7009:80"

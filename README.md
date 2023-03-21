@@ -41,15 +41,16 @@ The initial rendering may take 10-30 seconds, after which you will see a fabulou
 You will need to update postgis image to render other city/area:
 
 * Update postgis/Dockerfile by adding different pbf file to container
-```
-wget https://s3.amazonaws.com/metro-extracts.mapzen.com/melbourne_australia.osm.pbf
-```
 * Update postgis/initdb-postgis.sh to use a new file
 ```
 osm2pgsql --style /openstreetmap-carto/openstreetmap-carto.style -d gis -U postgres -k --slim /melbourne_australia.osm.pbf
 ```
 
 ## Using custom style
+
+a compiled stylesheet to use in mapnik is commited: renderer/map_data/stylesheet.xml
+To generate a new one, 
+see renderer/scripts/compile_style.sh which would originally run by renderer container entrypoint.sh
 
 This project is using [forked version](https://github.com/dooman87/openstreetmap-carto) of 
  [openstreetmap-carto style](https://github.com/gravitystorm/openstreetmap-carto) that

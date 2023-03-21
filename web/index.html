@@ -25,9 +25,13 @@
 </body>
 
 <script type="text/javascript">
-
-	var map = L.map('map').setView([47.661815, 11.5274247], 16);
-	var baseurl = location.protocol + "//" + location.hostname;
+	var stadium = {
+		lat: 48.1731612,
+		lon: 11.5443979,
+		zoom: 16
+	}
+	var map = L.map('map').setView([stadium.lat, stadium.lon], stadium.zoom);
+	var baseurl = location.protocol + "//" + location.hostname + ":7007";
 	var tilepath = "/tiles/";
 	L.tileLayer(baseurl + tilepath + '{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',

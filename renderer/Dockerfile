@@ -5,23 +5,24 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-RUN wget https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.tar.gz && \
-    tar -xzvf 1.075R-it.tar.gz && \
-    mkdir /usr/share/fonts/truetype/sourcepro-ttf/ && \
-    cp source-sans-pro-2.020R-ro-1.075R-it/TTF/*.ttf /usr/share/fonts/truetype/sourcepro-ttf/ && \
-    fc-cache && \
-    rm 1.075R-it.tar.gz && \
-    rm -rf source-sans-pro-2.020R-ro-1.075R-it
+
+# RUN wget https://github.com/adobe-fonts/source-sans/releases/download/3.046R/TTF-source-sans-3.046R.zip && \
+#     unzip -qqun TTF-source-sans-3.046R.zip && \
+#     mkdir /usr/share/fonts/truetype/sourcesans-ttf/ && \
+#     cp TTF-source-sans-3.046R/*.ttf /usr/share/fonts/truetype/sourcesans-ttf/ && \
+#     fc-cache && \
+#     rm TTF-source-sans-3.046R.zip && \
+#     rm -rf TTF-source-sans-3.046R
 
 RUN git clone https://github.com/dooman87/openstreetmap-carto.git
 WORKDIR /openstreetmap-carto
 ADD shapes/ data/
 RUN shapeindex --shape_files \
-    data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp \
+    data/world_boundaries/world_boundaries.shp \
     data/water-polygons-split-3857/water_polygons.shp \
     data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp \
     data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp \
-    data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
+    data/ne_10m_admin_0_boundary_lines_land/ne_10m_admin_0_boundary_lines_land.shp
 
 RUN mkdir /map_data
 VOLUME /map_data
