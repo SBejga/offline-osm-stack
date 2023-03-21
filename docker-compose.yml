@@ -24,6 +24,7 @@ services:
       - ./renderer/map_data/config.json:/map_data/config.json
       - ./renderer/map_data/stylesheet.xml:/openstreetmap-carto/stylesheet.xml
       - ./renderer/scripts:/scripts
+      - render-tiles-cache:/tmp/tiles
     volumes_from:
       - postgis:ro
     ports:
@@ -49,3 +50,4 @@ services:
 
 volumes:
   postgis-data:
+  render-tiles-cache:
